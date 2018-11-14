@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepush": "if branch is master; then npm run master_prepush; fi",
+    "master_prepush": "git tag v1.0.01 && npm version from-git && npm run build && git add ./dist/** && git commit -m 'build'",
+    "build": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/uc2pac/test/issues"
   },
-  "homepage": "https://github.com/uc2pac/test#readme"
+  "homepage": "https://github.com/uc2pac/test#readme",
+  "dependencies": {
+    "husky": "^1.1.4"
+  }
 }
